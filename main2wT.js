@@ -250,7 +250,7 @@ const renderToDom = (pets) => {
   // Loop over the array and create our pie cards
   for(pet of pets){
       domString += `
-      <div class="cardFlex">
+      
       <div class="card border-success mb-3" style="max-width: 18rem;">
       <div class="card-header">${pet.name}</div>
       <img src=${pet.imageUrl} class="img" alt=${pet.id}>
@@ -260,154 +260,56 @@ const renderToDom = (pets) => {
         <p class="card-text">${pet.specialSkill}</p>
       </div>
       <div class="card-footer bg-transparent border-success">${pet.type}</div>
-    </div>
     </div>`
   }
-  
-  // CAT FILTER
-  // Select our HTML div
     const app = document.querySelector("#app")
       // Set our cards to our div's inner HTML
       app.innerHTML = domString
   
   }
-
-  // Invoke our function and send in our full pie array
-  // This will put our cards on the page on load
   renderToDom(pets)
-  
-
-  // Now let's make our vegan button work!
-  // Select our HTML button
-  const catButton = document.querySelector("#catB")
-  
-  // Create our function to filter out our vegan pies
-  const filter = () => {
-      // Create an empty array to hold our vegan pie objects
-      // Just like we created our empty string to hold our cards!
-      let itsCATS = []
-  
-      // Loop over that pie arrray
-      for(pet of pets){
-          // Check to see if the pie is vegan
-          if(pet.type === "cat"){
-              // If it is push it into our pie array
-             itsCATS.push(pet)
-          }
-      }
-  
-      // Now we can use our handy dandy function to render our new vegan pie aray to our page!
-      renderToDom(itsCATS)
-  }
-  
-  // Add an event listener to our button
+ // Add an event listener to our button
   // This will listen for us to click our button
   // On click it will invoke our filter function
-  catButton.addEventListener('click', filter)
+  const catButton = document.querySelector("#catB")
+  //   const dogButton = document.querySelector("#dog")
+  //   const dinoButton = document.querySelector("#dino")
+  //   const allButton = document.querySelector("#all")
 
+   catButton.addEventListener('click', () => {
+     filter(pets, "cat")})
+    
+//   dogButton.addEventListener('click', () => {
+//     filter(pets, "dog")})
 
-// DOG FILTER
+//   dinoButton.addEventListener('click', () => {
+//     filter(pets, "dino")})
 
+//   allButton.addEventListener('click', () => {
+//     filter(pets, "all")})
 
-// Invoke our function and send in our full pie array
-// This will put our cards on the page on load
-renderToDom(pets)
+//   // Invoke our function and send in our full pie array
+//   // This will put our cards on the page on load
+//   renderToDom(pets)
+  
 
+//   // Now let's make our vegan button work!
+//   // Select our HTML button
+  
 
-// Now let's make our vegan button work!
-// Select our HTML button
-const dogButton = document.querySelector("#dog")
-
-// Create our function to filter out our vegan pies
-const filter1 = () => {
-  // Create an empty array to hold our vegan pie objects
-  // Just like we created our empty string to hold our cards!
-  let itsDOGS = []
-
-  // Loop over that pie arrray
-  for(pet of pets){
-      // Check to see if the pie is vegan
-      if(pet.type === "dog"){
-          // If it is push it into our pie array
-         itsDOGS.push(pet)
-      }
-  }
-
-  // Now we can use our handy dandy function to render our new vegan pie aray to our page!
-  renderToDom(itsDOGS)
+// // Create our function to filter out our vegan pies
+  const filter = (petsArr, petType) => {
+  // Create an empty array to hold our pet types
+  let newPetArray = []
+  //This array clears the filter to show all animals
+   if (petType === "all") {
+    return   renderToDom(pets)
+  } else {
+    for (pet of petsArr){
+      if (pet.type === petType){
+        newPetArray.push(pet)
+    }
+  }   
+  renderToDom (newPetArray)
+  } 
 }
-
-// Add an event listener to our button
-// This will listen for us to click our button
-// On click it will invoke our filter function
-dogButton.addEventListener('click', filter1)
-
-// DINO FILTER
-
-
-// Invoke our function and send in our full pie array
-// This will put our cards on the page on load
-renderToDom(pets)
-
-
-// Now let's make our vegan button work!
-// Select our HTML button
-const dinoButton = document.querySelector("#dino")
-
-// Create our function to filter out our vegan pies
-const filter2 = () => {
-  // Create an empty array to hold our vegan pie objects
-  // Just like we created our empty string to hold our cards!
-  let itsDINOS = []
-
-  // Loop over that pie arrray
-  for(pet of pets){
-      // Check to see if the pie is vegan
-      if(pet.type === "dino"){
-          // If it is push it into our pie array
-         itsDINOS.push(pet)
-      }
-  }
-
-  // Now we can use our handy dandy function to render our new vegan pie aray to our page!
-  renderToDom(itsDINOS)
-}
-
-// Add an event listener to our button
-// This will listen for us to click our button
-// On click it will invoke our filter function
-dinoButton.addEventListener('click', filter2)
-
-// ALL FILTER
-// Invoke our function and send in our full pie array
-// This will put our cards on the page on load
-renderToDom(pets)
-
-
-// Now let's make our vegan button work!
-// Select our HTML button
-const allButton = document.querySelector("#all")
-
-// Create our function to filter out our vegan pies
-const filter3 = () => {
-  // Create an empty array to hold our vegan pie objects
-  // Just like we created our empty string to hold our cards!
-  let itsALL = []
-
-  // Loop over that pie arrray
-  for(pet of pets){
-      // Check to see if the pie is vegan
-      if(pet.type === "cat" || "dog" || "dino"){
-          // If it is push it into our pie array
-         itsALL.push(pet)
-      }
-  }
-
-  // Now we can use our handy dandy function to render our new vegan pie aray to our page!
-  renderToDom(itsALL)
-}
-
-// Add an event listener to our button
-// This will listen for us to click our button
-// On click it will invoke our filter function
-allButton.addEventListener('click', filter3)
