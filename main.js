@@ -242,28 +242,7 @@ const pets = [
 ];
 
 
-/*const deletePie = (event)=> {
-  console.log(event)
 
-  if(event.target.id.includes("delete")){
-    //run delete logic
-    //determine which object im deleting by the id
-    //id = "delete"--"3"
-    const[, id] = event.target.id.split()
-    //or const[firstString, seconeString] =event.target.id.split
-    //tthen you can console
-    console.log(firstString)
-    console.log(secondString)
-    //identify where in the array object is
-
-    //remove obj from the array
-
-    //rerender the array
-  }
-}
- 
-const = document.querySelector(#app)
-app.addEventListener("click", deletePie)*/
 
   // Function to render cards to DOM that takes an array
 const renderToDom = (pets) => {
@@ -283,16 +262,18 @@ const renderToDom = (pets) => {
         <p class="card-text">${pet.specialSkill}</p>
       </div>
       <div class="card-footer">${pet.type}</div>
-      <button type="button" delete--${pets.id} class="btn btn-danger">Delete</button>
+      <button type="button" id="delete--${pet.id}" class="btn btn-danger">Delete</button>
     </div>
     </div>`
   }
+
+  app.innerHTML = domString;
   
   // CAT FILTER
   // Select our HTML div
-    const app = document.querySelector("#app")
+    const catapp = document.querySelector("#app")
       // Set our cards to our div's inner HTML
-      app.innerHTML = domString
+      catapp.innerHTML = domString
   
   }
 
@@ -425,6 +406,7 @@ const filter3 = () => {
           // If it is push it into our pie array
          itsALL.push(pet)
       }
+  
   }
 
   // Now we can use our handy dandy function to render our new vegan pie aray to our page!
@@ -443,16 +425,43 @@ const form = document.querySelector('form')
   //adding a new object
   const newPetObj = {
     id: pets.length + 1,
-    Name: document.querySelector("#petName"),
-    Color: document.querySelector("#petColor"),
-    SpecialSkills: document.querySelector("#petSkill"),
-    Type: document.querySelector("#petType"),
-    ImageUrl: document.querySelector("#petImage"),
+    Name: document.querySelector("#petName").value,
+    Color: document.querySelector("#petColor").value,
+    SpecialSkills: document.querySelector("#petSkills").value,
+    Type: document.querySelector("#petType").value,
+    ImageUrl: document.querySelector("#petImage").value,
 
   };
 
-  pets.push(newPetObj)
+  pets.unshift(newPetObj)
   renderToDom(pets)
   form.reset
  };
  form.addEventListener('submit', createPet);
+
+
+ //deleting a pet
+
+const deletePet = (event)=> {
+  console.log(event)
+
+  if(event.target.id.includes("delete")){
+    //run delete logic
+    //determine which object im deleting by the id
+    //id = "delete"--"3"
+    const[, id] = event.target.id.split("--")
+    //or const[firstString, seconeString] =event.target.id.split
+    //tthen you can console
+    console.log(firstString)
+    console.log(secondString)
+    //identify where in the array object is
+    const index = pets.findIndex(obj => obj.id ===Number(id));
+    //remove obj from the array
+    pets.splice(index,1)
+  
+    //rerender the array
+    renderToDom(pets);
+  }
+}
+ 
+app.addEventListener("click", deletePet)
