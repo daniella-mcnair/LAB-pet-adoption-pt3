@@ -10,7 +10,7 @@
 }
 
 .card-header {
-background-color: rgb(202, 202, 202);
+background-color: lightblue;
 border-color:  grey;
 text-align: center;
 
@@ -39,14 +39,20 @@ text-align: center;
   margin-right: 45px;
   height: 200px;
   width: 200px;
+  background-color: white;
 }
 
+.card{
+  margin: 5px;
+}
 .card-footer {
 text-align: center;
+background-color: light;
 }
 
 .card-body{
   text-align: center;
+  background-color: white;
 }
 
 .card-text {
@@ -55,4 +61,35 @@ text-align: center;
 
 .card-title {
 
+}
+
+.dog{
+background-color: orange;
+}
+
+.cat{
+  background-color: pink;
+}
+
+.dino{
+  background-color: blue;
+}
+
+.delete{
+  background: red;;
+}
+
+body{
+  background-color: rgb(236, 237, 243);
+}
+
+.button{
+  display: flex;
+  justify-content:  center; 
+
+}
+
+.btn btn-primary{
+  margin: 15px;
+  padding: auto;
 }

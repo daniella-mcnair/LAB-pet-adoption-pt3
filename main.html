@@ -8,13 +8,60 @@
   <link rel="stylesheet" href="main.css">
 </head>
 <body>
+  <!--1. Add form tag code within <form><</form>-->
+
+  <div class="button">
   <button type="button" id="catB" class="btn btn-primary">Cats</button>
   <button type="button" id="dog" class="btn btn-secondary">Dogs</button>
   <button type="button" id="dino" class="btn btn-success">Dino</button>
   <button type="button" id="all" class="btn btn-danger">All</button>
+</div>
     <div id="app"></div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
     <script src="main.js"></script>
+
+    <form>
+      <label for="adoptee">Full Name</label>
+      <div class="form-group">
+        <input type = "text" class="form-control" id="adoptee" placeholder="Jane Doe">
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+        
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Who you want to adopt:</label>
+        <input type="type" class="form-control" id="adoptName" placeholder="Brown">
+      </div>
+      <br>
+    
+
+      <form>
+        <div class="form-group">
+          <h1>Add a Pet</h1>
+          <label for="exampleInputEmail1">Name:</label>
+          <input type="text" class="form-control" id="petName" placeholder="Enter name">
+         
+
+          <label for="exampleInputEmail1">Color:</label>
+          <input type="text" class="form-control" id="petColor" aria-describedby="addPet" placeholder="Enter color">
+         
+
+          <label for="exampleInputEmail1">Special Skills:</label>
+          <input type="text" class="form-control" id="petSkills" aria-describedby="addPet" placeholder="Enter special skills">
+         
+
+          <label for="exampleInputEmail1">Type:</label>
+          <input type="text" class="form-control" id="petType" aria-describedby="addPet" placeholder="Enter type">
+         
+
+          <label for="exampleInputEmail1">Image:</label>
+          <input type="url" class="form-control" id="petImage" aria-describedby="addPet" placeholder="Enter image url">
+ 
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+
+
+    </form>
 
     
   </div>
