@@ -240,8 +240,31 @@ const pets = [
     imageUrl: "https://cdn.pixabay.com/photo/2017/01/03/18/54/rex-1950276_1280.jpg"
   }
 ];
+
+
+/*const deletePie = (event)=> {
+  console.log(event)
+
+  if(event.target.id.includes("delete")){
+    //run delete logic
+    //determine which object im deleting by the id
+    //id = "delete"--"3"
+    const[, id] = event.target.id.split()
+    //or const[firstString, seconeString] =event.target.id.split
+    //tthen you can console
+    console.log(firstString)
+    console.log(secondString)
+    //identify where in the array object is
+
+    //remove obj from the array
+
+    //rerender the array
+  }
+}
  
-  
+const = document.querySelector(#app)
+app.addEventListener("click", deletePie)*/
+
   // Function to render cards to DOM that takes an array
 const renderToDom = (pets) => {
 
@@ -250,16 +273,17 @@ const renderToDom = (pets) => {
   // Loop over the array and create our pie cards
   for(pet of pets){
       domString += `
-      <div class="cardFlex">
-      <div class="card border-success mb-3" style="max-width: 18rem;">
+  
+      <div class="card" style="max-width: 18rem;">
       <div class="card-header">${pet.name}</div>
       <img src=${pet.imageUrl} class="img" alt=${pet.id}>
-      <div class="card-body text-success">
+      <div class="card-body">
       
         <h5 class="card-title">${pet.color}</h5>
         <p class="card-text">${pet.specialSkill}</p>
       </div>
-      <div class="card-footer bg-transparent border-success">${pet.type}</div>
+      <div class="card-footer">${pet.type}</div>
+      <button type="button" delete--${pets.id} class="btn btn-danger">Delete</button>
     </div>
     </div>`
   }
@@ -411,3 +435,24 @@ const filter3 = () => {
 // This will listen for us to click our button
 // On click it will invoke our filter function
 allButton.addEventListener('click', filter3)
+
+const form = document.querySelector('form')
+ const createPet = (event) => {
+  event.preventDefault()
+
+  //adding a new object
+  const newPetObj = {
+    id: pets.length + 1,
+    Name: document.querySelector("#petName"),
+    Color: document.querySelector("#petColor"),
+    SpecialSkills: document.querySelector("#petSkill"),
+    Type: document.querySelector("#petType"),
+    ImageUrl: document.querySelector("#petImage"),
+
+  };
+
+  pets.push(newPetObj)
+  renderToDom(pets)
+  form.reset
+ };
+ form.addEventListener('submit', createPet);
