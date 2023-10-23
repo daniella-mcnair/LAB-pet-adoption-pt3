@@ -425,11 +425,11 @@ const form = document.querySelector('form')
   //adding a new object
   const newPetObj = {
     id: pets.length + 1,
-    Name: document.querySelector("#petName").value,
-    Color: document.querySelector("#petColor").value,
-    SpecialSkills: document.querySelector("#petSkills").value,
-    Type: document.querySelector("#petType").value,
-    ImageUrl: document.querySelector("#petImage").value,
+    name: document.querySelector("#petName").value,
+    color: document.querySelector("#petColor").value,
+    specialSkill: document.querySelector("#petSkills").value,
+    type: document.querySelector("#petType").value,
+    imageUrl: document.querySelector("#petImage").value,
 
   };
 
@@ -452,10 +452,9 @@ const deletePet = (event)=> {
     const[, id] = event.target.id.split("--")
     //or const[firstString, seconeString] =event.target.id.split
     //tthen you can console
-    console.log(firstString)
-    console.log(secondString)
+ 
     //identify where in the array object is
-    const index = pets.findIndex(obj => obj.id ===Number(id));
+    const index = pets.findIndex(obj => obj.id === Number(id));
     //remove obj from the array
     pets.splice(index,1)
   
