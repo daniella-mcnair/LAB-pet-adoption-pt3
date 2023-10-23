@@ -16,9 +16,7 @@ text-align: center;
 
 }
 
-.mb-3 {
-  
-}
+
 
 #app{
   display: flex;
@@ -59,9 +57,6 @@ background-color: light;
   text-align: center;
 }
 
-.card-title {
-
-}
 
 .dog{
 background-color: orange;
