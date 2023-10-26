@@ -245,7 +245,7 @@ const pets = [
 
 
 const renderToDom = (pets) => {
-  const catapp = document.querySelector("#app")
+  const app = document.querySelector("#app")
   let domString = ""
   for(pet of pets){
       domString += `
@@ -273,11 +273,97 @@ const renderToDom = (pets) => {
       //catapp.innerHTML = domString
   
   }
+//CAT TAG
+
+  
+const filter = () => {
+  let itsCATS = []
+  for(pet of pets){
+      if(pet.type === "cat"){
+         itsCATS.push(pet)
+      }
+  }
+  renderToDom(itsCATS);
+  console.log(renderToDom(itsCATS));
+}
 
 
 
 
+//DOG TAG
+const filter1 = () => {
+let itsDOGS = []
+for(pet of pets){
+   if(pet.type === "dog"){
+      itsDOGS.push(pet)
+   }
+}
+renderToDom(itsDOGS)
+console.log(renderToDom(itsDOGS));
+}
 
+
+
+//DINO TAG
+const filter2 = () => {
+let itsDINOS = []
+for(pet of pets){
+  if(pet.type === "dino"){
+     itsDINOS.push(pet)
+  }
+}
+renderToDom(itsDINOS)
+console.log(renderToDom(itsDINOS));
+}
+
+
+//ALL TAG
+const filter3 = () => {
+let itsALL = []
+for(pet of pets){
+  if(pet.type === "cat" || "dog" || "dino"){
+     itsALL.push(pet)
+  }
+
+}
+renderToDom(itsALL)
+console.log(renderToDom(itsALL));
+}
+
+
+
+
+//add pet
+const createPet = (event) => {
+  event.preventDefault()
+
+  //adding a new object
+  const newPetObj = {
+    id: pets.length + 1,
+    name: document.querySelector("#petName").value,
+    color: document.querySelector("#petColor").value,
+    specialSkill: document.querySelector("#petSkills").value,
+    type: document.querySelector("#petType").value,
+    imageUrl: document.querySelector("#petImage").value,
+
+  };
+
+  pets.unshift(newPetObj)
+  return renderToDom(pets)
+  form.reset
+ };
+ 
+
+ //delete pet
+ const deletePet = (event)=> {
+  if(event.target.id.includes("delete")){
+    const[, id] = event.target.id.split("--")
+    const index = pets.findIndex(obj => obj.id === Number(id));
+    pets.splice(index,1)
+    return renderToDom(pets);
+  }
+}
+ 
 
 
 
@@ -288,7 +374,7 @@ const renderToDom = (pets) => {
 
 //CLEAN UP
 const events = () => {
-catapp.innerHTML = domString
+
 const catapp = document.querySelector("#app")
 const catButton = document.querySelector("#catB");
 const dogButton = document.querySelector("#dog");
@@ -304,91 +390,9 @@ form.addEventListener('submit', createPet);
 catButton.addEventListener('click', filter)
 
 
-//CAT TAG
-
-  
-  const filter = () => {
-      let itsCATS = []
-      for(pet of pets){
-          if(pet.type === "cat"){
-             itsCATS.push(pet)
-          }
-      }
-      renderToDom(itsCATS)
-  }
-
- 
-
-
- //DOG TAG
- const filter1 = () => {
-   let itsDOGS = []
-   for(pet of pets){
-       if(pet.type === "dog"){
-          itsDOGS.push(pet)
-       }
-   }
-   renderToDom(itsDOGS)
- }
 
 
 
-//DINO TAG
-const filter2 = () => {
-  let itsDINOS = []
-  for(pet of pets){
-      if(pet.type === "dino"){
-         itsDINOS.push(pet)
-      }
-  }
-  renderToDom(itsDINOS)
-}
-
-
- //ALL TAG
-const filter3 = () => {
-  let itsALL = []
-  for(pet of pets){
-      if(pet.type === "cat" || "dog" || "dino"){
-         itsALL.push(pet)
-      }
-  
-  }
-  renderToDom(itsALL)
-}
-
-
-
- //add pet
- const createPet = (event) => {
-  event.preventDefault()
-
-  //adding a new object
-  const newPetObj = {
-    id: pets.length + 1,
-    name: document.querySelector("#petName").value,
-    color: document.querySelector("#petColor").value,
-    specialSkill: document.querySelector("#petSkills").value,
-    type: document.querySelector("#petType").value,
-    imageUrl: document.querySelector("#petImage").value,
-
-  };
-
-  pets.unshift(newPetObj)
-  renderToDom(pets)
-  form.reset
- };
- 
-
- //delete pet
- const deletePet = (event)=> {
-  if(event.target.id.includes("delete")){
-    const[, id] = event.target.id.split("--")
-    const index = pets.findIndex(obj => obj.id === Number(id));
-    pets.splice(index,1)
-    renderToDom(pets);
-  }
-}
  
 
 
