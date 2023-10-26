@@ -244,12 +244,9 @@ const pets = [
 
 
 
-  // Function to render cards to DOM that takes an array
 const renderToDom = (pets) => {
-
-  // Create our domstring so we can push our cards to it
+  const app = document.querySelector("#app")
   let domString = ""
-  // Loop over the array and create our pie cards
   for(pet of pets){
       domString += `
   
@@ -271,155 +268,73 @@ const renderToDom = (pets) => {
   
   // CAT FILTER
   // Select our HTML div
-    const catapp = document.querySelector("#app")
-      // Set our cards to our div's inner HTML
-      catapp.innerHTML = domString
+    //const catapp = document.querySelector("#app")
+   
+      //catapp.innerHTML = domString
   
   }
+//CAT TAG
 
-  // Invoke our function and send in our full pie array
-  // This will put our cards on the page on load
-  renderToDom(pets)
   
-
-  // Now let's make our vegan button work!
-  // Select our HTML button
-  const catButton = document.querySelector("#catB")
-  
-  // Create our function to filter out our vegan pies
-  const filter = () => {
-      // Create an empty array to hold our vegan pie objects
-      // Just like we created our empty string to hold our cards!
-      let itsCATS = []
-  
-      // Loop over that pie arrray
-      for(pet of pets){
-          // Check to see if the pie is vegan
-          if(pet.type === "cat"){
-              // If it is push it into our pie array
-             itsCATS.push(pet)
-          }
+const filter = () => {
+  let itsCATS = []
+  for(pet of pets){
+      if(pet.type === "cat"){
+         itsCATS.push(pet)
       }
-  
-      // Now we can use our handy dandy function to render our new vegan pie aray to our page!
-      renderToDom(itsCATS)
   }
-  
-  // Add an event listener to our button
-  // This will listen for us to click our button
-  // On click it will invoke our filter function
-  catButton.addEventListener('click', filter)
+  renderToDom(itsCATS);
+  console.log(renderToDom(itsCATS));
+}
 
 
-// DOG FILTER
 
 
-// Invoke our function and send in our full pie array
-// This will put our cards on the page on load
-renderToDom(pets)
-
-
-// Now let's make our vegan button work!
-// Select our HTML button
-const dogButton = document.querySelector("#dog")
-
-// Create our function to filter out our vegan pies
+//DOG TAG
 const filter1 = () => {
-  // Create an empty array to hold our vegan pie objects
-  // Just like we created our empty string to hold our cards!
-  let itsDOGS = []
-
-  // Loop over that pie arrray
-  for(pet of pets){
-      // Check to see if the pie is vegan
-      if(pet.type === "dog"){
-          // If it is push it into our pie array
-         itsDOGS.push(pet)
-      }
-  }
-
-  // Now we can use our handy dandy function to render our new vegan pie aray to our page!
-  renderToDom(itsDOGS)
+let itsDOGS = []
+for(pet of pets){
+   if(pet.type === "dog"){
+      itsDOGS.push(pet)
+   }
+}
+renderToDom(itsDOGS)
+console.log(renderToDom(itsDOGS));
 }
 
-// Add an event listener to our button
-// This will listen for us to click our button
-// On click it will invoke our filter function
-dogButton.addEventListener('click', filter1)
-
-// DINO FILTER
 
 
-// Invoke our function and send in our full pie array
-// This will put our cards on the page on load
-renderToDom(pets)
-
-
-// Now let's make our vegan button work!
-// Select our HTML button
-const dinoButton = document.querySelector("#dino")
-
-// Create our function to filter out our vegan pies
+//DINO TAG
 const filter2 = () => {
-  // Create an empty array to hold our vegan pie objects
-  // Just like we created our empty string to hold our cards!
-  let itsDINOS = []
-
-  // Loop over that pie arrray
-  for(pet of pets){
-      // Check to see if the pie is vegan
-      if(pet.type === "dino"){
-          // If it is push it into our pie array
-         itsDINOS.push(pet)
-      }
+let itsDINOS = []
+for(pet of pets){
+  if(pet.type === "dino"){
+     itsDINOS.push(pet)
   }
-
-  // Now we can use our handy dandy function to render our new vegan pie aray to our page!
-  renderToDom(itsDINOS)
+}
+renderToDom(itsDINOS)
+console.log(renderToDom(itsDINOS));
 }
 
-// Add an event listener to our button
-// This will listen for us to click our button
-// On click it will invoke our filter function
-dinoButton.addEventListener('click', filter2)
 
-// ALL FILTER
-// Invoke our function and send in our full pie array
-// This will put our cards on the page on load
-renderToDom(pets)
-
-
-// Now let's make our vegan button work!
-// Select our HTML button
-const allButton = document.querySelector("#all")
-
-// Create our function to filter out our vegan pies
+//ALL TAG
 const filter3 = () => {
-  // Create an empty array to hold our vegan pie objects
-  // Just like we created our empty string to hold our cards!
-  let itsALL = []
-
-  // Loop over that pie arrray
-  for(pet of pets){
-      // Check to see if the pie is vegan
-      if(pet.type === "cat" || "dog" || "dino"){
-          // If it is push it into our pie array
-         itsALL.push(pet)
-      }
-  
+let itsALL = []
+for(pet of pets){
+  if(pet.type === "cat" || "dog" || "dino"){
+     itsALL.push(pet)
   }
 
-  // Now we can use our handy dandy function to render our new vegan pie aray to our page!
-  renderToDom(itsALL)
+}
+renderToDom(itsALL)
+console.log(renderToDom(itsALL));
 }
 
-// Add an event listener to our button
-// This will listen for us to click our button
-// On click it will invoke our filter function
-allButton.addEventListener('click', filter3)
 
-const form = document.querySelector('form')
- const createPet = (event) => {
+
+
+//add pet
+const createPet = (event) => {
   event.preventDefault()
 
   //adding a new object
@@ -434,33 +349,61 @@ const form = document.querySelector('form')
   };
 
   pets.unshift(newPetObj)
-  renderToDom(pets)
+  return renderToDom(pets)
   form.reset
  };
- form.addEventListener('submit', createPet);
-
-
- //deleting a pet
-
-const deletePet = (event)=> {
-  console.log(event)
-
-  if(event.target.id.includes("delete")){
-    //run delete logic
-    //determine which object im deleting by the id
-    //id = "delete"--"3"
-    const[, id] = event.target.id.split("--")
-    //or const[firstString, seconeString] =event.target.id.split
-    //tthen you can console
  
-    //identify where in the array object is
+
+ //delete pet
+ const deletePet = (event)=> {
+  if(event.target.id.includes("delete")){
+    const[, id] = event.target.id.split("--")
     const index = pets.findIndex(obj => obj.id === Number(id));
-    //remove obj from the array
     pets.splice(index,1)
-  
-    //rerender the array
-    renderToDom(pets);
+    return renderToDom(pets);
   }
 }
  
-app.addEventListener("click", deletePet)
+
+
+
+
+
+
+
+
+//CLEAN UP
+const events = () => {
+
+const catapp = document.querySelector("#app")
+const catButton = document.querySelector("#catB");
+const dogButton = document.querySelector("#dog");
+const dinoButton = document.querySelector("#dino");
+const form = document.querySelector('form');
+const allButton = document.querySelector("#all");
+
+dogButton.addEventListener('click', filter1);
+dinoButton.addEventListener('click', filter2);
+allButton.addEventListener('click', filter3);
+app.addEventListener("click", deletePet);
+form.addEventListener('submit', createPet);
+catButton.addEventListener('click', filter)
+
+
+
+
+
+ 
+
+
+}
+
+//put logic into event
+ 
+ const startApp = () => {
+   renderToDom(pets)
+   events()
+ }
+
+ //call function
+startApp()
